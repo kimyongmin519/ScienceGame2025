@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: PlayerSO
   m_EditorClassIdentifier: 
   PlayerHP: 100
-  PlayerSpeed: 5
+  PlayerSpeed: 10
+  PlayerJumpPower: 10

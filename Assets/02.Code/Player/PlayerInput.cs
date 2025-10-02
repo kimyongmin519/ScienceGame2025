@@ -1,8 +1,10 @@
 using System;
+using _02.Code.Player;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerInput : MonoBehaviour, Controller.IPlayerActions
+[CreateAssetMenu(fileName = "PlayerInput", menuName = "SO/PlayerInput")]
+public class PlayerInput : ScriptableObject, Controller.IPlayerActions
 {
     private Controller _controller;
     public Vector2 MoveDir { get; private set; }
@@ -26,16 +28,16 @@ public class PlayerInput : MonoBehaviour, Controller.IPlayerActions
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        MoveDir = context.ReadValue<Vector2>().normalized;
+        MoveDir = context.ReadValue<Vector2>();
     }
 
     public void OnAttack(InputAction.CallbackContext context)
     {
-        
     }
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        OnJumpPressed?.Invoke();
+        if (context.performed)
+            OnJumpPressed?.Invoke();
     }
 }

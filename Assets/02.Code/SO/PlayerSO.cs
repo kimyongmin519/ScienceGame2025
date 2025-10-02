@@ -4,5 +4,6 @@ using UnityEngine;
 public class PlayerSO : ScriptableObject
 {
     public int PlayerHP;
-    public int PlayerSpeed;
+    public float PlayerSpeed;
+    public float PlayerJumpPower;
 }
