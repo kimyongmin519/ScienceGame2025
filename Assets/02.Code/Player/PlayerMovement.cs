@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour, IPlayerComponent
     public bool IsGrounded { get; private set; }
 
     private float _timeInAir;
-    private float _extraGravity = 0.25f;
+    private float _extraGravity = 0.275f;
 
     private void Update()
     {

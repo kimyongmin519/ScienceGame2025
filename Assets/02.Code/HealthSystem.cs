@@ -3,18 +3,42 @@ using UnityEngine;
 
 public class HealthSystem : MonoBehaviour, IDamageable
 {
-    public int HP { get; private set; }
-    [field:SerializeField] public int MaxHP { get; private set; }
-
-    private void Start()
+    protected bool IsGod = false;
+    
+    private int _hp;
+    public int Hp
     {
-        HP = MaxHP;
-        Debug.Log(HP);
+        get
+        {
+            return _hp;
+        }
+        set
+        {
+            int before = _hp;
+            _hp = value;
+            if (before != value)
+            {
+                OnHpChanged?.Invoke();
+            }
+        }
+    }
+    [field:SerializeField] public int MaxHp { get; private set; }
+
+    protected event Action OnHpChanged;
+
+    protected virtual void Start()
+    {
+        Hp = MaxHp;
+        Debug.Log(Hp);
     }
 
 
     public void GetDamage(int damage)
     {
-        HP -= damage;
+        if (!IsGod)
+        {
+            Hp -= damage;
+            Debug.Log(Hp);
+        }
     }
 }

@@ -8,6 +8,7 @@ public class ElecHitbox : MonoBehaviour
     private SpriteRenderer _spriteRenderer;
 
     private PoolFactory<ElecHitbox> _pool;
+    
     public float Delay { get; set; }
 
     public void Initialize(PoolFactory<ElecHitbox> pool) => _pool = pool;
@@ -18,16 +19,25 @@ public class ElecHitbox : MonoBehaviour
 
     private void OnEnable()
     {
-        Sequence seq = DOTween.Sequence();
-
-        seq.Append(_spriteRenderer.DOFade(0.5f, Delay));
-        seq.Join(transform.DOScaleX(1.5f, Delay));
-        seq.AppendCallback(() => _pool.Push(this));
+        ShowHitbox();
     }
 
     private void OnDisable()
     {
-        _spriteRenderer.DOFade(0f, 0f);
-        transform.DOScaleX(0.1f, 0f);
+        DOTween.Kill(gameObject);
+        _spriteRenderer.color = new Color(1, 0, 0, 0);
+        transform.localScale = new Vector3(0.1f, 20f, 1);
+    }
+
+    private void ShowHitbox()
+    {
+        Sequence seq = DOTween.Sequence();
+
+        seq.Append(_spriteRenderer.DOFade(0.5f, Delay));
+        seq.Join(transform.DOScaleX(1.5f, Delay));
+        seq.AppendCallback(() =>
+        {
+            _pool.Push(this);
+        });
     }
 }

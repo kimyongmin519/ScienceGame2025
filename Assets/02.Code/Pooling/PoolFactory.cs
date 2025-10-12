@@ -16,8 +16,8 @@ namespace _02.Code.Pooling
 
         public void Push(T go)
         {
-            go.gameObject.SetActive(false);
             _pool.Push(go);
+            go.gameObject.SetActive(false);
         }
 
         public T Pop()
@@ -29,11 +29,6 @@ namespace _02.Code.Pooling
 
             go.gameObject.SetActive(true);
             return go;
-        }
-
-        public void Add()
-        {
-            Object.Instantiate(_prefab);
         }
     }
 }

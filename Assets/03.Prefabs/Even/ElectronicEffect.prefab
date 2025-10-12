@@ -49,7 +49,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delay: 1
   range: 1.5
-  damage: 1
   pillar: {fileID: 6128606711687456234}
   elecEffect: {fileID: 2586752661278475028}
 --- !u!82 &331615383156559632
@@ -175,8 +174,8 @@ Transform:
   m_GameObject: {fileID: 6128606711687456234}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.041900672}
-  m_LocalScale: {x: 0.01, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3242988354345242256}
@@ -263,7 +262,7 @@ Transform:
   m_GameObject: {fileID: 7769094572333537558}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.4, z: 0}
+  m_LocalPosition: {x: 0, y: -0.39, z: 0}
   m_LocalScale: {x: 1, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
