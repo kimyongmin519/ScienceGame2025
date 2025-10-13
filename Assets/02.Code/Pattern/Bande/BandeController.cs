@@ -15,7 +15,7 @@ public class BandeController : MonoBehaviour
 
     private void Start()
     {
-        OnReady += Attack;
+        OnReady += BandeMove;
         
         Sequence s = DOTween.Sequence();
 
@@ -39,15 +39,28 @@ public class BandeController : MonoBehaviour
         }
     }
 
-    private void Attack()
+    private void BandeMove()
     {
         Sequence s = DOTween.Sequence();
         
         s.Append(transform.DOMoveX(target.transform.position.x, 0.5f)).SetEase(Ease.OutQuad);
     }
 
+    public void Charge()
+    {
+        transform.DOMoveY(1, 0.75f).SetRelative(true).SetEase(Ease.OutQuad);
+    }
+
+    public void Attack()
+    {
+        Sequence s = DOTween.Sequence();
+        
+        s.Append(transform.DOMoveY(-5, 0.2f)).SetRelative(true).SetEase(Ease.OutQuad);
+        s.AppendCallback(() => OnSpikeRush?.Invoke());
+    }
+
     private void OnDestroy()
     {
-        OnReady -= Attack;
+        OnReady -= BandeMove;
     }
 }

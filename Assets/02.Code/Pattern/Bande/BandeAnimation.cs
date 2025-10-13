@@ -31,6 +31,11 @@ public class BandeAnimation : MonoBehaviour
         _animator.SetTrigger(_rerollHash);
     }
 
+    public void ResetReadyAnim()
+    {
+        _animator.ResetTrigger(_attackReadyHash);
+    }
+
     private void OnDestroy()
     {
         _bandeController.OnReady -= AttackReadyAnim;
