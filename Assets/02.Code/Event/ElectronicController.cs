@@ -1,11 +1,7 @@
-using System;
 using System.Collections;
 using _02.Code.Pooling;
 using DG.Tweening;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using Random = UnityEngine.Random;
 using Sequence = DG.Tweening.Sequence;
 
 public class ElectronicController : MonoBehaviour

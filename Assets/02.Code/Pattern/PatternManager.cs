@@ -16,30 +16,64 @@ public class PatternManager : MonoBehaviour
         }
         set
         {
-            _delay = Mathf.Clamp(value, 0.2f, 1f);
+            _delay = Mathf.Clamp(value, 0.3f, 1f);
         }
     }
+
+    private bool _patternEnabled = true;
+
+    private Coroutine _pC;
+    private Coroutine _pC2;
+    
 
     [SerializeField] private Transform[] spawnPoints;
 
     private void Start()
     {
         ElectronicController.Instance.HitboxSpawn(Vector3.right * 100);
-        StartCoroutine(TestCour());
-        StartCoroutine(DifiUpCoroutine());
+        _pC = StartCoroutine(TestCour());
+        _pC2 = StartCoroutine(DifiUpCoroutine());
+        
+        LevelManager.Instance.OnStopPattern += StopElectronic;
+        LevelManager.Instance.OnStartPattern += StartElectronic;
     }
 
     IEnumerator TestCour()
     {
-        ElectronicController.Instance.HitboxSpawn(spawnPoints[Random.Range(0, spawnPoints.Length)].position);
-        yield return new WaitForSeconds(Delay);
-        StartCoroutine(TestCour());
+        while (_patternEnabled)
+        {
+            ElectronicController.Instance.HitboxSpawn(spawnPoints[Random.Range(0, spawnPoints.Length)].position);
+            yield return new WaitForSeconds(Delay);
+            
+        } 
     }
 
     IEnumerator DifiUpCoroutine()
     {
-        yield return new WaitForSeconds(1);
-        Delay -= 0.005f;
-        StartCoroutine(DifiUpCoroutine());
+        while (_patternEnabled)
+        {
+            yield return new WaitForSeconds(1);
+            Delay -= 0.0025f;
+        } 
+    }
+
+    private void StopElectronic()
+    {
+        StopCoroutine(_pC);
+        StopCoroutine(_pC2);
+        _patternEnabled = false;
+    }
+
+    private void StartElectronic()
+    {
+        _patternEnabled = true;
+        _pC = StartCoroutine(TestCour());
+        _pC2 = StartCoroutine(DifiUpCoroutine());
+    }
+
+    private void OnDestroy()
+    {
+        LevelManager.Instance.OnStopPattern -= StopElectronic;
+        LevelManager.Instance.OnStartPattern -= StartElectronic;
     }
 }

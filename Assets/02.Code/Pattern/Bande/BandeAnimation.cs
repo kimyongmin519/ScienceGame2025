@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class BandeAnimation : MonoBehaviour
 {
-    private static int _attackReadyHash = Animator.StringToHash("AttackReady");
-    private static int _rerollHash = Animator.StringToHash("Reroll");
+    private static readonly int attackReadyHash = Animator.StringToHash("AttackReady");
+    private static readonly int rerollHash = Animator.StringToHash("Reroll");
     
     private Animator _animator;
     private BandeController _bandeController;
@@ -21,19 +21,20 @@ public class BandeAnimation : MonoBehaviour
         _bandeController.OnReroll += RerollAnim;
     }
 
-    public void AttackReadyAnim()
+    private void AttackReadyAnim()
     {
-        _animator.SetTrigger(_attackReadyHash);
+        _animator.SetTrigger(attackReadyHash);
     }
 
-    public void RerollAnim()
+    private void RerollAnim()
     {
-        _animator.SetTrigger(_rerollHash);
+        _animator.SetTrigger(rerollHash);
     }
 
     public void ResetReadyAnim()
     {
-        _animator.ResetTrigger(_attackReadyHash);
+        _animator.ResetTrigger(attackReadyHash);
+        _bandeController.BandeTurn();
     }
 
     private void OnDestroy()

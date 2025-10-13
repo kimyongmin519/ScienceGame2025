@@ -37,7 +37,6 @@ public class PlayerInput : ScriptableObject, Controller.IPlayerActions
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (context.performed)
-            OnJumpPressed?.Invoke();
+        
     }
 }

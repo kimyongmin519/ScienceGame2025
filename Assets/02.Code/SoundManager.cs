@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -27,12 +28,19 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
-        PlaySound(_audioSource);
+        StartCoroutine(TtongCode());
     }
 
 
     public void PlaySound(AudioSource audioSource)
     {
         _audioSource.PlayOneShot(audioSource.clip);
+    }
+
+    private IEnumerator TtongCode()
+    {
+        PlaySound(_audioSource);
+        yield return new WaitForSeconds(195.456f);
+        StartCoroutine(TtongCode());
     }
 }
