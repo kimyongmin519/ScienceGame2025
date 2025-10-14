@@ -6,6 +6,7 @@ using Sequence = DG.Tweening.Sequence;
 
 public class BandeController : MonoBehaviour
 {
+    [SerializeField] private ScoreValueSO scoreValueData;
     public static BandeController Instance { get; private set; }
     public event Action OnExpolotion;
 
@@ -65,6 +66,7 @@ public class BandeController : MonoBehaviour
         {
             OnExpolotion?.Invoke();
             Instantiate(expolotionEffect, new Vector3(transform.position.x, -2.3f,0), Quaternion.identity);
+            ScoreManager.Instance.OnScoreDrop?.Invoke(scoreValueData.bandeScore);
         });
     }
 

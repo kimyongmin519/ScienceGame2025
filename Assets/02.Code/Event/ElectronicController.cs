@@ -8,6 +8,8 @@ public class ElectronicController : MonoBehaviour
 {
     public static ElectronicController Instance;
     
+    [SerializeField] private ScoreValueSO scoreValueData;
+    
     [SerializeField] private Electronic elecPrefab;
     [SerializeField] private ElecHitbox hitboxPrefab;
     [SerializeField] private float attackDelay = 1f;
@@ -48,12 +50,15 @@ public class ElectronicController : MonoBehaviour
 
     private void ElecSpawn(Vector3 spawnPos)
     {
+        ScoreManager.Instance.OnScoreDrop?.Invoke(scoreValueData.elecScore);
+        
         Electronic elec = _elecFactory.Pop();
         elec.Initialize(_elecFactory);
         elec.transform.parent = transform.parent;
         elec.transform.position = spawnPos;
         elec.transform.localScale = new Vector3(1,20,1);
         StartCoroutine(HitPanjeon(spawnPos));
+        
     }
     
     private Vector2 _elecRange = new Vector2(1.5f, 20);

@@ -254,6 +254,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 186358932}
+  - component: {fileID: 186358933}
   m_Layer: 0
   m_Name: ScoreManager
   m_TagString: Untagged
@@ -276,6 +277,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &186358933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186358931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1527cf5900721546b826961dff82dd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &276769066
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,6 +392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0da4f4020aad5d4c836613142db4a9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreValueData: {fileID: 11400000, guid: c2afc52ec1dd23e4b98b9b46bee49ca4, type: 2}
   target: {fileID: 1210728760}
   hitbox: {fileID: 914427262012461174, guid: 8be42dd31f4ce554ebe70ac8cf98842f, type: 3}
   expolotionEffect: {fileID: 7494477094162750549, guid: 5e62d635c0c7ddf4ba0ed2592d97d1bd, type: 3}
@@ -2123,6 +2137,7 @@ GameObject:
   - component: {fileID: 1355956037}
   - component: {fileID: 1355956036}
   - component: {fileID: 1355956038}
+  - component: {fileID: 1355956039}
   m_Layer: 5
   m_Name: ScoreUI
   m_TagString: Untagged
@@ -2214,6 +2229,18 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1355956039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1355956034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e176a7ac20ecd374bb493d86c0a301e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1390324772
 GameObject:
   m_ObjectHideFlags: 0
@@ -2938,6 +2965,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc47974364847634d85f32a8c59503af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreValueData: {fileID: 11400000, guid: c2afc52ec1dd23e4b98b9b46bee49ca4, type: 2}
   elecPrefab: {fileID: 5002618528531993905, guid: 593e429ab92a82e468a9810096a2ff79, type: 3}
   hitboxPrefab: {fileID: 7834492391124026710, guid: dbde3d9f823a6de4fbed61c1d9048f69, type: 3}
   attackDelay: 1.5
