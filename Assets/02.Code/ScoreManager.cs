@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -30,8 +31,12 @@ public class ScoreManager : MonoBehaviour
             Instance = this;
         else
             Destroy(gameObject);
+        
+        DontDestroyOnLoad(gameObject);
 
         OnScoreDrop += ScoreUp;
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void ScoreUp(int score)
@@ -42,5 +47,12 @@ public class ScoreManager : MonoBehaviour
     private void OnDestroy()
     {
         OnScoreDrop -= ScoreUp;
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name != "Gameover")
+            _score = 0;
     }
 }

@@ -3,6 +3,7 @@ using _02.Code.Player;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using Sequence = DG.Tweening.Sequence;
 
 public class Player : HealthSystem
@@ -26,6 +27,7 @@ public class Player : HealthSystem
     {
         base.Start();
         OnHpChanged += ShowShield;
+        OnDeath += Dead;
     }
 
     private void Update()
@@ -77,5 +79,11 @@ public class Player : HealthSystem
     private void OnDestroy()
     {
         OnHpChanged -= ShowShield;
+        OnDeath -= Dead;
+    }
+
+    private void Dead()
+    {
+        SceneManager.LoadScene("Gameover");
     }
 }

@@ -16,7 +16,7 @@ public class PatternManager : MonoBehaviour
         }
         set
         {
-            _delay = Mathf.Clamp(value, 0.3f, 1f);
+            _delay = Mathf.Clamp(value, 0.275f, 1f);
         }
     }
 

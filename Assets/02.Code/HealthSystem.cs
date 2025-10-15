@@ -24,7 +24,8 @@ public class HealthSystem : MonoBehaviour, IDamageable
     }
     [field:SerializeField] public int MaxHp { get; private set; }
 
-    protected event Action OnHpChanged;
+    public event Action OnHpChanged;
+    protected event Action OnDeath;
 
     protected virtual void Start()
     {
@@ -38,7 +39,10 @@ public class HealthSystem : MonoBehaviour, IDamageable
         if (!IsGod)
         {
             Hp -= damage;
-            Debug.Log(Hp);
+            if (Hp <= 0)
+            {
+                OnDeath?.Invoke();
+            }
         }
     }
 }

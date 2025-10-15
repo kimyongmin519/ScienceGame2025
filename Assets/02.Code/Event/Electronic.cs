@@ -1,9 +1,6 @@
-using System;
-using System.Collections;
 using _02.Code.Pooling;
 using UnityEngine;
 using DG.Tweening;
-using UnityEditor;
 
 public class Electronic : MonoBehaviour
 {

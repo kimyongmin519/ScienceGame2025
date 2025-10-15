@@ -35,6 +35,16 @@ public class BandeManager : MonoBehaviour
             _delay = Random.Range(randomMin, randomMax);
             yield return new WaitForSeconds(_delay);
             BandeController.Instance.OnReady?.Invoke();
+            if (ScoreManager.Instance.Score > 1000)
+            {
+                randomMin = 7.5f;
+                randomMax = 15f;
+            }
+            if (ScoreManager.Instance.Score > 3000)
+            {
+                randomMin = 5f;
+                randomMax = 10f;
+            }
         }
     }
 
